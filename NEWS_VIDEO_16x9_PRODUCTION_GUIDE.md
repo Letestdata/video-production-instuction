@@ -54,6 +54,8 @@ In all video productions, the following five foundational engines are mandatory:
 | **Channel Graphics Credit** | **ZERO Credit** | Do not put credit badges on News Fair's own custom motion graphics. |
 | **AI Images** | **No Credit by Default** | If credit is necessary, strictly label as: `"AI generated image"` (2-3 words). |
 | **Images With Text** | **Prohibited except real documents** | Never use photos with baked-in TV news tickers. Only use text images for genuine gazettes, court orders, or posters. |
+| **Personal Media Ban** | **Do NOT use user's video or image** | Never use private, personal, or creator's own videos/photos. Strictly source broadcast media from the internet. |
+| **Motion Graphic Audio Sync** | **Strictly According to Audio** | Every motion graphic must be created and animated to directly reflect the spoken voiceover at that second. |
 | **Approval Gate** | **Storyboard & Studio First** | Always present storyboard stills and live studio previews before rendering final MP4. |
 
 ---
@@ -93,18 +95,31 @@ The animation cycle must alternate across:
   ```
   (2–3 words max, standard top-right pill badge).
 
+### E. Absolute Ban on User's Personal Media ("Do Not Use My Video and Image")
+- **Strict Prohibition**: Under no circumstances may video production use the user's or creator's personal videos, private photos, webcam recordings, personal phone clips, or private local media.
+- **Compulsory Internet & Broadcast Sourcing**: All video b-roll and still photography must be sourced exclusively from authentic public internet channels:
+  1. **Broadcast Video B-Roll**: Downloaded via `yt-dlp` from official public broadcast feeds (Sansad TV, ANI News, PTI, Press Information Bureau (PIB), Press Pool, DD News).
+  2. **Editorial Press Photography**: High-resolution documentary photos from credible press agencies (The Hindu, Indian Express, PTI, ANI archives).
+  3. **Documentary Primary Evidence**: Certified gazettes, signed Bar Council / Court orders, or genuine student protest placards.
+  4. **Script-Specific AI Conceptual Imagery**: Generated clean without text, uncredited or labeled `● CREDIT: AI GENERATED IMAGE`.
+
 ---
 
 ## 4. Script-Tailored Motion Graphics (Always Dynamic, Never Static)
 
-### A. Non-Repetitive, Script-Specific Visuals
-Do not reuse the identical motion graphic in every video. Every story has a unique theme, and the motion graphics must reflect that theme:
-- **Parliamentary & Political Standoffs**: Split-Flap mechanical departure boards, Lok Sabha / Rajya Sabha seating heatmaps, Parliament Dome vector alert HUDs.
-- **Judicial & Constitutional Issues**: High-tech Scales of Justice, Section 163 / Section 144 Legal Blueprint schematics, Constitution preamble seals.
-- **National Protests & Student Movements**: India Radar Network Maps, Geo-location pulse beacons, Protest March tracking timelines.
-- **Debates & Controversies**: Government vs. Opposition Dual Battle HUD with opposing floating cards, rotating confrontation rings, and punchy quote callouts.
-- **Financial Scams & Policy**: Multi-step money trail flowcharts, interactive stat cards with counting numbers, progress ring dials.
-- **Channel Identity**: Floating Independent Journalism Shields, animated subscribe bell reminders, "Truth Prevails" grand finale cards.
+### A. Bespoke Design Strictly Aligned to Audio Script
+Do not reuse the identical motion graphic in every video, and **never use generic, decorative motion graphics**. Every motion graphic must be conceived, designed, and animated **strictly according to what the spoken audio is saying at that exact timestamp**:
+
+1. **Audio-Driven Visual Semantic Alignment**:
+   - **Parliamentary & Political Standoffs**: When the voiceover speaks of heated Lok Sabha or Rajya Sabha debates, render Split-Flap mechanical departure boards, Lok Sabha / Rajya Sabha seating heatmaps, or Parliament confrontation HUDs displaying the spoken debate topics.
+   - **Judicial Orders & Dissent Suppression**: When the voiceover speaks of legal repression, Section 163 bans, or court notices, render high-tech Legal Blueprint schematics with moving laser scanners and slamming administrative rejection stamps (*"सिस्टम से असहमति: धारा 163 का शिकंजा"*).
+   - **Nationwide Campus & Student Protests**: When the voiceover speaks of nationwide university outrage (e.g., NALSAR, JNU, LU, MU, JU, NLSIU), render the **National Campus Alert Radar Map** with 360° rotating radar sweep and active pulsing red nodes placed on the specific universities named in the voiceover.
+   - **Debates & Confrontation**: When the voiceover contrasts government power against student/opposition dissent, render the **Government vs. Opposition Dual Battle HUD** with rotating VS emblem and spoken quote callouts.
+   - **Independent Journalism Defense**: When the voiceover discusses the attack on questioners and the need for courage in reporting, render the **Independent Journalism Shield** with glowing energy aura and News Fair brand core.
+   - **Grand Finale & Channel Identity**: In the closing seconds as the voiceover delivers the final takeaway, render the **Truth Prevails Grand Finale** with rotating golden sunburst rays and the signature punchline (*"लेकिन सच्ची ख़बर नहीं! News Fair • जनता की आवाज़ • सच्ची पत्रकारिता"*).
+
+2. **Audio-Beat Micro-Animations**:
+   - Transitions, stamp slams, and alert pings must trigger in synchronization with the cadence and emphasis beats of the speaker's voice.
 
 ### B. Dynamic Motion Requirement — Zero Static Elements
 Every single element on a motion graphic screen must remain active:
