@@ -40,10 +40,12 @@ In all video productions, the following five foundational engines are mandatory:
 | Parameter | Mandatory Rule | Implementation Requirement |
 | :--- | :--- | :--- |
 | **Video Ratio** | **16:9 Landscape (1920×1080)** | Full HD broadcast canvas at 30 FPS or 60 FPS. |
-| **Visual Cut Pacing** | **2.0 to 3.0 Seconds Max** | Every single visual cut must change every 2 to 3 seconds. Never leave visuals static. |
+| **Image Cut Pacing** | **Strictly 2.0 to 3.0 Seconds Max** | Still photos must only appear for 2 to 3 seconds max. Never hold a still image longer than 3 seconds. |
+| **Video & Motion Graphics Duration** | **As Long as Needed by Script (Strictly Under 10s)** | Video b-roll and motion graphics can be used as long as needed according to the script beat/sentence (typically 3.5s – 6.5s). **STRICT BAN on 10–20 second long video/motion graphic shots** to prevent dragging. |
 | **Image Motion Variety** | **Never repeat the same animation** | Cycle across `zoom_in`, `zoom_out`, `pan_left`, `pan_right`, `diagonal_drift`, `fast_push`. |
 | **Footage Mix** | **Compulsory Videos + Images** | Mix authentic web videos (b-roll/press clips) with clean editorial photos. |
-| **Motion Graphics Animation**| **100% Dynamic & Animated** | Every motion graphic must continuously animate (spin, glow, sweep, float, micro-jitter). No static graphics. |
+| **Motion Graphics Animation**| **100% Dynamic & Highly Animated** | Every motion graphic must feature continuous multi-layered motion (sweeping lasers, oscillating needles, particle glows, floating 3D perspective, traveling light beams, expanding shockwaves). Zero static elements. |
+| **Motion Graphic Understandability** | **Instant 1-Second Visual Comprehension** | Must be immediately understandable at a glance: crystal-clear visual metaphors (split-flap arrival, classified dossier stamp, timeline progress HUD, 3D rotating book, polarized opinion meter, flashing hazard punchline). Bold high-contrast Baloo typography. |
 | **Motion Graphic Design** | **Bespoke per Script** | Never reuse the same generic template. Build unique visuals tailored to the specific story. |
 | **Captions Length** | **Strictly 3 to 4 Words on Screen** | Exactly 3–4 words spoken verbatim in sync with audio. Never full lines or summaries. |
 | **Captions Style** | **Motion-Director Spring Pop** | Apple-grade spring physics, centered bottom capsule, 1 gold highlighted emphasis word. |
@@ -103,6 +105,23 @@ The animation cycle must alternate across:
   3. **Documentary Primary Evidence**: Certified gazettes, signed Bar Council / Court orders, or genuine student protest placards.
   4. **Script-Specific AI Conceptual Imagery**: Generated clean without text, uncredited or labeled `● CREDIT: AI GENERATED IMAGE`.
 
+### F. Shot Duration Rules: Images (2–3s) vs. Video & Motion Graphics (Script-Driven, < 10s)
+1. **Still Images (Strictly 2.0 to 3.0 Seconds Max)**:
+   - Photographs, newspaper scans, and document crops must strictly remain on screen for **2.0 to 3.0 seconds max**.
+   - Holding a static still photograph longer than 3 seconds causes viewers to lose visual interest.
+   - Every still photo must feature a distinct, non-repeating dynamic camera animation (`zoom_in`, `zoom_out`, `pan_left`, `pan_right`, `diagonal_up`, `fast_push`).
+
+2. **Video B-Roll & Motion Graphics (As Long as Needed According to Script)**:
+   - Video clips and bespoke motion graphics carry rich temporal, narrative, and motion information.
+   - They must **not** be artificially or arbitrarily cut short at 2.0–2.5 seconds if the visual demonstration, voiceover sentence, or dialogue beat requires more time.
+   - Let motion graphics run for their full semantic journey (e.g. 3.5s to 6.5s) to let split-flap departures reveal titles, timeline lasers sweep across historical nodes, or 3D books rotate with lighting sheens.
+   - Let authentic video clips run long enough to establish genuine newsroom or parliamentary atmosphere (typically 3.5s to 5.5s).
+
+3. **Strict Ban on 10–20 Second Long Shots (Zero Monotony / No Dragging)**:
+   - **Absolute Prohibition**: Never let a single continuous video clip or motion graphic run for **10 to 20 seconds long**.
+   - Shots of 10–20 seconds drag down video pacing and make investigative news content feel unedited and lethargic.
+   - If an investigative thought or argument spans 10+ seconds in the script, split it into dynamic complementary cuts by alternating between bespoke motion graphics, authentic video b-roll, and snappy 2–3s editorial photographs.
+
 ---
 
 ## 4. Script-Tailored Motion Graphics (Always Dynamic, Never Static)
@@ -132,6 +151,33 @@ Every single element on a motion graphic screen must remain active:
 
 ### C. Zero Credit on Channel Motion Graphics
 Never add an editorial credit badge (like `● CREDIT: PTI PHOTO`) to News Fair's own custom-designed motion graphics. Credit badges are strictly reserved for external press agency photographs.
+
+### D. Kinetic Dynamism & Multi-Layered Animation Architecture
+Motion graphics must never appear as flat, decorative slides. Every graphic must operate like a living, broadcast-grade telemetry HUD with synchronized multi-layered movement:
+1. **Primary Layer**: High-impact spring entrance (`spring({ damping: 10, mass: 0.8, stiffness: 200 })`) with physical overshoot and settle.
+2. **Secondary Organic Layer**: Continuous non-stop environmental motion:
+   - Floating perspective shifts (`transform: perspective(1000px) rotateY(...) translateY(...)`).
+   - Oscillating gauges, meters, and needle fluctuations reflecting live measurement.
+   - Dual-axis scanning laser sweeps with glowing heads and trailing light fades.
+   - Animated progress nodes where light pulses travel down connector lines in real-time.
+3. **Tertiary Micro-Detail Layer**:
+   - Breathing aura rings (`radial-gradient`), scanning grid meshes, and digital particle drift.
+   - Live mechanical flip animations where tiles cycle rapidly through intermediate glyphs before locking into place.
+   - Physical impact shockwaves: when stamps or badges land, trigger an expanding radial shockwave ring and a 2-frame subtle micro-shake to convey physical weight.
+
+### E. Instant Understandability & Visual Clarity Standards
+A motion graphic fails if the viewer has to pause the video to understand what is being communicated. The core journalistic takeaway must be **immediately obvious within 1 second**:
+1. **Clear Visual Metaphors**: Ground every abstract concept in a tangible real-world news construct:
+   - **Breaking Book / Memoir Release**: Mechanical Airport Split-Flap board or 3D Floating Hardcover book with glowing release date pill.
+   - **Classified Secrets / Unfiltered Truth**: Intelligence Dossier Blueprint with laser scanning bar and slammed bold "TOP SECRET // बड़ा खुलासा!" stamp.
+   - **Political Career / Journey**: Sequential Timeline HUD with illuminated nodes, milestone dates, and active node glowing halos.
+   - **Clashing Perspectives / Public Debate**: Polarized Seismic Meter with green vs. red cards, active needle fluctuation, and "VS" lightning indicator.
+   - **Dramatic Punchline / Climax**: High-voltage Red Alert Warning HUD with flashing warning beacons, bold oversized quotes, and slamming impact stamps.
+2. **High-Contrast Bold Hierarchy**:
+   - Minimum font size of 24px for auxiliary labels and 48px to 68px for main punchlines.
+   - Exclusively use `Baloo 2` and `Baloo Bhai 2` in **ExtraBold (800) and Black (900)** weights.
+   - High-contrast color coding: News Fair Gold (`#FFD700`) on deep obsidian ruby (`#120204`), emerald green (`#00FF66`) for favorable shifts, neon alert crimson (`#FF3344`) for critical shifts.
+   - Prominent Devanagari Hindi headlines positioned front and center so viewers instantly absorb the narrative beat.
 
 ---
 
