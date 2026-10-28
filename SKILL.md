@@ -118,7 +118,7 @@ Inspect rendered PNG stills to verify:
 ## How to Edit This Skill
 
 This skill is fully editable. You can modify it at any time:
-1. **Direct File Edit**: Open and edit `d:\News\Clude news ai\.agents\skills\news-video-16x9\SKILL.md` (or the global copy at `C:\Users\ahmad\.gemini\antigravity\skills\news-video-16x9\SKILL.md`).
+1. **Direct File Edit**: Open and edit `SKILL.md` (or the global copy at `skills\news-video-16x9\SKILL.md`).
 2. **In Chat**: Ask the assistant: *"Update the news-video-16x9 skill to add rule X"* or *"Change the image duration rule in news-video-16x9 to Y seconds"*.
 3. Any changes made to the `SKILL.md` file take effect immediately for all subsequent tasks.
 
