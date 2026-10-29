@@ -1,6 +1,6 @@
 ---
 name: news-video-16x9
-description: Standard operating procedure and automated workflow for producing broadcast-quality 16:9 news investigative videos for News Fair. Use whenever the user asks to "make news video 16:9", "produce news video", "news video production", "16:9 news", "edit news video", or gives a news script/audio for full video assembly. Enforces zero media repetition, authentic Hindi Baloo typography, gapless verbatim Whisper acoustic subtitles, zero user video policy, and fast editorial pacing.
+description: Standard operating procedure and automated workflow for producing broadcast-quality 16:9 news investigative videos for News Fair. Mandatory five foundational engines (Remotion, HyperFrames, FFmpeg, Whisper/whisper.cpp audio master synchronization, yt-dlp). Enforces zero media repetition, authentic Hindi Baloo typography, gapless verbatim Whisper acoustic subtitles, zero user video policy, full-screen broadcast b-roll, structured PIP, continuous scrolling news ticker, lower-third data architecture, official brand logo, zero infographic tropes, and 7 core motion graphics standards (Network Bug & Live Clock, Stingers/Bumpers, Multi-Box Grids, Full-Screen Quote Boards, 3D Geospatial Maps, Top Sliver Banner, and AR Data Pillars).
 ---
 
 # News Video 16:9 Production Skill
@@ -9,116 +9,168 @@ This skill governs the complete end-to-end production of broadcast-standard **16
 
 ---
 
-## The 7 Mandatory Production Laws
+## 1. Core Tool Stack & Installation Specifications
 
-1. **Absolute Zero Media & Motion Graphic Repetition**:
-   - Every single visual cut in the timeline must be 100% unique.
-   - Every editorial photo appears **strictly once** (verified via MD5 duplicate hash check).
-   - Every bespoke motion graphic card appears **strictly once**.
-   - If public video b-roll is used, every clip appears **strictly once**.
+In all video productions, the following five foundational engines are mandatory:
 
-2. **Personal / User Media Prohibition (Zero-Video Rule When Mandated)**:
-   - **Strict Ban on Creator's Personal Media**: Never use clips from the creator's personal studio/channel folders (`BBV news`, personal recordings, private footage).
-   - **Zero-Video Mandate**: When the user requests "remove all video" or "no video", the timeline must contain **ZERO `.mp4` video files**. The visual layer is carried entirely by high-resolution editorial photos with active Ken Burns moves and bespoke motion graphic cards.
+1. **Remotion**: [github.com/remotion-dev/remotion](https://github.com/remotion-dev/remotion)
+   - **System Location**: `reels-engine/` (`@remotion/cli 4.0.538`)
+   - **Command**: `npx remotion studio src/index.ts --port=3000` / `npx remotion render src/index.ts <composition-id> out.mp4`
+   - **Role**: Programmatic video timeline composition, 60/30 FPS rendering, audio muxing, and frame-accurate animation orchestration.
 
-3. **Mandatory Devanagari Hindi Baloo Font**:
-   - All text—headlines, statistics, labels, credits, and subtitles—must render in authentic **Devanagari Hindi Baloo** (`Baloo 2`).
-   - Aliased in `fonts.css` via `@font-face` with base64 embedding to `'Baloo Bhai 2'`, `'Baloo Bhai'`, and `'Baloo 2'`.
-   - Never allow fallback to generic sans-serif or non-Devanagari font families.
+2. **HyperFrames**: [github.com/heygen-com/hyperframes](https://github.com/heygen-com/hyperframes)
+   - **System Location**: `production/democracy-questions/studio/` (`hyperframes@0.8.208`)
+   - **Command**: `npx hyperframes preview --port=3002 --no-open`
+   - **Role**: Real-time browser-based timeline preview, instant scrubbing, visual layout inspection, and visual QA before rendering.
 
-4. **Gapless Verbatim Whisper Acoustic Synchronization**:
-   - Master audio is transcribed with `faster-whisper` using `vad_filter=False` to prevent Silero VAD from silently dropping speech chunks.
-   - Scan for audio gaps > 1.2s across all segments; slice and transcribe any unaligned audio windows to guarantee 100% gapless acoustic coverage.
-   - Map ground-truth script words to Whisper acoustic segment timestamps so that every subtitle cue matches spoken speech down to the exact millisecond.
-   - **Subtitle format**: Centered bottom glass capsule, strictly 3–4 words per cue, spring pop entrance, with 1 keyword highlighted in radiant gold (`#FFD700`).
+3. **FFmpeg**: [github.com/FFmpeg/FFmpeg](https://github.com/FFmpeg/FFmpeg)
+   - **System Location**: System PATH (`ffmpeg version 9.0.1-full_build-www.gyan.dev`)
+   - **Command**: `ffmpeg -i input.mp4 ...`
+   - **Role**: Lossless audio extraction, H.264/AAC transcode, video trimming, downsampling, and proxy generation.
 
-5. **Clean & Dignified Motion Graphics (Zero Sci-Fi Clutter)**:
-   - **Strictly Prohibited**: Cyberpunk HUDs, spinning radar needles, military grids, and chaotic dials.
-   - **Required Style**: Elegant dark obsidian news cards (`rgba(18, 2, 4, 0.94)`), subtle gold/red border trims (`#FFD700`), bold Hindi Baloo headlines, clean two-column comparison cards, and high-contrast horizontal progress bars (e.g. green 19% vs red 81%).
-   - Must be immediately understandable at a glance in under 1 second.
+4. **Whisper (whisper.cpp)**: [github.com/ggml-org/whisper.cpp](https://github.com/ggml-org/whisper.cpp)
+   - **System Location**: System PATH (`whisper-cli.exe` v1.9.5 build 5454 + `openai-whisper` Python 3.11)
+   - **Command**: `whisper-cli.exe -m <model.bin> -f audio.wav -oj` or `python process_cues.py`
+   - **Role**: **MANDATORY Audio Master Synchronization Engine**. Millisecond-precision speech recognition, word-level audio alignment, automatic subtitle cue extraction (`clean_cues.json`, `.srt`), AND orchestrating the exact timecode cuts for all B-roll footage, videos, images, and bespoke motion graphics to match the audio.
 
-6. **Fast Editorial Camera Motion & Pacing**:
-   - **Still Photos**: Strictly 2.0s to 3.5s duration. Never hold a still image longer than 3.5s.
-   - **Motion Graphics**: 5.0s to 7.5s (up to 9s for grand finale).
-   - **Alternating Camera Moves**: No two consecutive photo cuts may share the same animation. Cycle across:
-     - `zoom_in` (Scale 1.00 → 1.08)
-     - `zoom_out` (Scale 1.08 → 1.00)
-     - `pan_left` (TranslateX +30px → -30px)
-     - `pan_right` (TranslateX -30px → +30px)
-     - `diagonal_up` (TranslateX -20px → +20px, TranslateY +20px → -20px)
-     - `fast_push` (Scale 1.00 → 1.12)
-
-7. **Broadcast Canvas & Attribution Standards**:
-   - Canvas: Full HD 1920×1080 at 30 FPS.
-   - **Top-Left Bug**: Persistent News Fair logo + "News Fair" + "सच्ची पत्रकारिता" + pulsating live red recording dot.
-   - **Top-Right Credit**: Strictly 2–3 words for editorial photos (`● CREDIT: PTI PHOTO`, `● CREDIT: SANSAD TV`). Zero credit on News Fair's own custom motion graphics.
-   - **Documentary Evidence**: Images with text are only permitted for genuine primary sources (Gazette notifications, signed court/BCI orders, protest placards). Never use images with baked-in commercial TV news tickers.
+5. **yt-dlp**: [github.com/yt-dlp/yt-dlp](https://github.com/yt-dlp/yt-dlp)
+   - **System Location**: System PATH (`yt-dlp 2026.10.26`)
+   - **Command**: `yt-dlp -f "bestvideo[height<=1080]+bestaudio/best" <URL>`
+   - **Role**: Downloading authentic press conference footage, parliamentary debates, and internet b-roll clips.
 
 ---
 
-## 6-Step Automated Production Workflow
+## 2. The Mandatory Broadcast Production Laws
 
-### Step 1: Script & Audio Ingestion
-- Place master audio at `production/<project-id>/audio/audio.wav` (and `demo.mp3`).
-- Place the approved Hindi script at `demo scipt.txt`.
-- Calculate exact total duration via `ffprobe` (e.g. 365.98s = 10,979 frames at 30 FPS).
+1. **The Strict "One-Time Use" Rule (Absolute Zero Asset Repetition)**:
+   - Every single visual asset in the timeline—whether an editorial photo, b-roll plate, politician portrait, or evidence document—must appear **strictly once**.
+   - **Zero Duplicate Hash/File Reuse**: Never reuse the same image file or video clip across different scenes or within the same scene.
+   - If a political leader (e.g. Mangani Lal Mandal, Lalu Prasad Yadav) is mentioned at multiple points in the script, you **must source a different unique photograph or video angle** for each distinct appearance.
+   - If a mechanism (e.g. EVM, ballot box, counting hall, voting queue) is referenced across multiple scenes, you **must use a distinct unique asset** (e.g. EVM button press vs EVM testing vs EVM distribution vs ballot box stamping vs voters outside gate).
 
-### Step 2: Gapless Whisper Acoustic Capture
-Run `fast_transcribe.py` using `faster-whisper`:
-```python
-from faster_whisper import WhisperModel
-model = WhisperModel("base", device="cpu", compute_type="int8", cpu_threads=8)
-segments, info = model.transcribe("audio.wav", language="hi", beam_size=1, vad_filter=False, word_timestamps=True)
-```
-- Audit gaps: Scan for any `gap > 1.2s` between consecutive segments.
-- If any gap exists, slice the audio chunk with `ffmpeg -ss ... -to ...` and transcribe with `beam_size=5` to achieve 100% gapless acoustic continuity.
+2. **Mandatory Official News Fair Logo Integration**:
+   - **Official Logo Assets**: Strictly use the official brand logos located at:
+     - `reels-engine/public/brand/news_fair_official_transparent.png` (for top-left broadcast channel bug: white TV antenna frame, News Fair typography, and globe mark with clean alpha).
+     - `reels-engine/public/brand/news_fair_official_logo.png` (the full 2000×2000 crimson brand plate from `News fair.png` for master station cards and outros).
+   - **Top-Left Channel Bug Standard**:
+     - Docked at `top: 26px`, `left: 40px`, `zIndex: 10000`.
+     - Solid crimson broadcast plate (`linear-gradient(135deg, rgba(127, 2, 3, 0.96) 0%, rgba(60, 1, 2, 0.98) 100%)`) with `2px solid #FFD700` gold border and sharp rectangular corners (`borderRadius: 6px`).
+     - Display the official transparent TV mark at height `52px` (ensuring the internal "News Fair" text and globe are sharp and legible), paired with a pulsing `🔴 LIVE` badge and `सच्ची पत्रकारिता` tagline in gold.
+   - Never use placeholder text boxes, generic letters ("NF"), or emoji placeholders for the News Fair logo.
 
-### Step 3: Verbatim 3–4 Word Cue Generation
-- Split the ground-truth Hindi script into words.
-- Anchor script word sequences to Whisper segment acoustic timestamps.
-- Chunk words into strictly 3–4 words per cue.
-- Highlight key news terms in gold (`#FFD700`).
-- Export to `clean_cues.json`.
+3. **Consistent Broadcast Monitor PIP Framing**:
+   - Every inserted photo, evidence plate, and leader portrait must be displayed inside a standardized **Broadcast Monitor Frame**:
+     - **Unified Center Stage Monitor** (`960px × 520px`): Centered in the upper 75% of the screen.
+     - **Duel Split Screen Monitors** (`580px × 380px` each): Used exclusively when comparing two opposing leaders (e.g. Lalu vs Rahul).
+     - **Frame Engineering**: Metallic chamfered borders (`3.5px solid #FFD700` or `#E50914` or `#007BFF`), ambient studio glow, top live feed header strap (`🔴 LOCATION // TOPIC` + `● FEED ACTIVE`), CRT TV scanline texture, and a bottom caption strap.
+     - Never mix unbordered raw cutouts with bordered boxes. Stick strictly to this standardized broadcast framing architecture.
 
-### Step 4: Shot Architecture & Zero-Repetition Media Curation
-- Structure shots across the script's narrative Acts (e.g. Act 1: Hook, Act 2: Investigation & Stats, Act 3: Clash, Act 4: Fact Check & Finale).
-- Sizing rule:
-  - 20 bespoke motion graphics (~5.5s–7.0s each) = ~120s–130s.
-  - ~75 unique editorial photos (~3.0s–3.2s each) = ~235s–245s.
-  - Total == exact master audio duration down to 0.01s.
-- Run MD5 duplicate audit to verify that every image hash is 100% unique.
+4. **Enlarged & Animated Continuous Scrolling News Ticker**:
+   - **Prominent Dimensions**: Height must be **58px to 64px** at the bottom edge (`bottom: 0px`).
+   - **Continuous Smooth Scroll**: Text must crawl continuously from right to left across all frames without jumping, freezing, or stuttering.
+   - **Pulsing Live Badge**: Fixed on the left (`width: ~210px`), featuring a bright pulsing gradient (`#FF1E27` to `#B71C1C`) with yellow accent dot: `⚡ LIVE TICKER` / `ताज़ा अपडेट`.
 
-### Step 5: Remotion Timeline Assembly
-- Define composition in `reels-engine/src/ParliamentMonsoonSession16x9.tsx` (or `<ProjectName>16x9.tsx`).
-- Register composition ID in `Root.tsx`.
-- Wire `ShotRenderer` with all bespoke motion graphic components from `ParliamentMotionGraphics.tsx` and image Ken Burns handlers.
-- Verify TypeScript compilation:
-  ```bash
-  npm --prefix reels-engine run build
-  ```
+5. **Docked Lower Third (L3) Architecture (Sharp-Edged, Bottom-Left, Zero Emojis)**:
+   - All text, metrics, and seat counts belong strictly in the **Lower Third strap** docked directly above the ticker (`bottom: 62px` to `170px`).
+   - **Zero Emojis**: Absolute strict ban on all emojis (`💔`, `🤝`, `🚨`, `📉`, `📊`, `⚠️`, `🔥`, `🗳️`, `❌`, `🎙️`, `⚖️`, `🔒`, `🛡️`, `⏰`, `💥`, `⚡`) in Lower Third headlines, tags, subtext, and ticker. Use clean, authoritative Devanagari/English text only.
+   - **Docked at Bottom-Left**: Docked at `left: 54px`, with sharp rectangular edges (`borderRadius: 4px`) and `maxWidth: 1280px` (leaving the right screen area open like CNN/NDTV broadcast standards).
+   - **Zero Center Badges**: Never place floating tally cards or central statistic boxes in the middle of the screen.
+   - **Category Chip**: Solid red or blue category chip (`BREAKING NEWS`, `बड़ी खबर`, `चुनाव नतीजे`, `विशेष बयान`, `सियासी संग्राम`, `गठबंधन में दरार`) with subtle pulse animation and gold right border.
 
-### Step 6: Multi-Milestone Visual QA
-Render sample still frames at diverse narrative milestones via `npx remotion still`:
-- Frame 30 (01s): Intro overview card.
-- Frame 1775 (~59s): CTA / Engagement card.
-- Frame 2500 (~83s): Editorial photo with credit and verbatim caption.
-- Frame 4200 (~140s): Data / Productivity progress bar card.
-- Frame 5600 (~186s): Debate matrix / Political portrait.
-- Frame 7650 (~255s): Fact-check card.
-- Frame 10850 (~361s): Grand Finale ("सत्यमेव जयते। जय हिन्द।").
+6. **Acoustic Whisper Subtitle Architecture & Spell-Check Mandate**:
+   - Docked cleanly directly above the Lower Third (`bottom: 174px` to `178px`).
+   - Verbatim Hindi Devanagari text in authentic **Baloo Bhai 2** font, strictly 3–4 words per cue.
+   - **Mandatory Alignment & Spell-Check Against Official Script**: Whisper raw transcription often introduces phonetic misspellings, merged words (e.g. `शामिल्दलोंने`), or truncated phrases (e.g. `बन्धन में`). All subtitle cues MUST be rigorously aligned and sanitized against the authentic script text (`script.txt`) to guarantee 100% accurate Hindi spelling, proper spacing between words, and correct grammar.
 
-Inspect rendered PNG stills to verify:
-1. Zero videos in timeline.
-2. Authentic Hindi Baloo font active everywhere.
-3. Subtitles verbatim match audio at that exact millisecond.
-4. Zero repeated visuals.
+7. **Elimination of Infographic & Explainer Tropes (Journalism, Not Cartoons)**:
+   - **NO Boomerangs**: Use authentic editorial footage of tense political rallies or press confrontations with sharp L3 headlines.
+   - **NO Padlocks**: Use gritty real-world footage of chained and padlocked iron gates at polling booths and voters waiting outside.
+   - **NO Scales of Justice or Red ❌ Overlays**: Use real-world election counting centers, EVM testing, and authentic news evidence.
+
+8. **Personal / User Media Prohibition (Zero-Video Rule When Mandated)**:
+   - Strictly prohibit personal recordings or private computer files from the creator's computer. Use only verified, internet-sourced public domain and editorial news archives.
+
+9. **The Dynamic Abstract Background Law (Never Static / No Slideshows)**:
+   - The background must **never be static or dead**—even when avoiding a busy live newsroom, it must maintain constant, slow cinematic motion:
+     - **Continuously Drifting Mesh Gradient**: Radial light orbs slowly undulating across coordinates (`radial-gradient` with sine/cosine coordinates).
+     - **Subtle Rotating/Drifting Faint Map**: A huge, very faint (5%–8% opacity) map of Bihar/India or abstract globe rotating slowly and breathing in the background.
+     - **Continuous Background Zoom**: Slow camera push on the entire canvas (100% to 106% over the video).
+     - **Oblique Moving Tech Grid**: Subtle digital grid scrolling diagonally so the background never feels like a flat slide.
+
+10. **Strict Layering & PIP Framing Architecture**:
+    - **Absolute Top-Layer Rule for Lower Third (L3)**: The Lower Third text strap must ALWAYS be the topmost layer (`zIndex: 9999`). It must **never** be obscured, covered, or clipped by images, video clips, or monitor frames.
+    - **Structured Framing (No Floating Assets)**: Every photo of a politician (Lalu Yadav, Mangani Lal, etc.) or evidence document must be enclosed inside a structured **Broadcast Monitor Frame** with metallic borders, top live feed header, and bottom caption strap. Never let portraits float loosely in dark space.
+    - If full-screen footage is used, it fills the canvas edge-to-edge with the Lower Third cleanly docked on top.
+
+11. **Continuous Ken Burns Motion on Every Single Asset (5% to 10% Scale)**:
+    - Every image, video clip, and photo inside monitors or full-screen plates must have an active Ken Burns zoom-in or zoom-out (minimum 5% to 10% scale change, e.g. 1.00 to 1.08) over its display duration.
+    - Visual assets must never freeze or appear as completely motionless stills.
+
+12. **Real Footage / B-Roll Exclusively (Zero Explainer Infographics)**:
+    - Real news broadcasts use authentic B-roll (real-world footage and photojournalism), **not explainer infographic motion graphics or cartoon icons**:
+      - Real EVM machines being handled by officials instead of glowing EVM vector icons.
+      - Real counting halls or historical archival documents instead of scales of justice.
+      - Real padlocked iron gates and voter queues instead of graphic padlock drops.
+      - Real street protests with party flags instead of animated boomerangs.
+
+13. **The Portrait & Transparent Media Rule (Zero-Cropping for 1:1, 9:16, & Cutouts)**:
+    - **Never Crop Portrait or Transparent Media**: If an asset is in **portrait orientation** (1:1 square ratio, 4:5, 3:4, or 9:16 vertical ratio), or if it is a **transparent PNG cutout** (politician cutouts, transparent party symbols, badges, or vertical documents):
+      - **DO NOT CROP**: Never apply `objectFit: "cover"` or aggressive cropping that cuts off heads, foreheads, chins, shoulders, or graphic borders.
+      - **Full Display Mode (`objectFit: "contain"`)**: The image must be displayed **fully and completely** without any clipping.
+      - **Studio Framing & Ambient Backdrop**: When a 1:1, 9:16, or transparent portrait is framed inside a 16:9 viewport or broadcast monitor:
+        - Set `objectFit: "contain"`, `objectPosition: "center center"`.
+        - Render a complementary darkened/blurred ambient layer behind it (`objectFit: "cover"`, `filter: "blur(28px) brightness(0.28)"`) or an authentic dark news gradient, eliminating blank white borders while preserving 100% of the subject.
+        - For transparent PNG cutouts: Render centered at natural full height or proper scale, never clipping edges.
+
+14. **Human-in-the-Loop Review Gate ("Show Me First Before Render")**:
+    - When requested ("before render show me first"), **render sample still frames first** and present them to the user for visual verification. Only initiate the full video render upon approval.
+
+15. **Politician Name Plate & Layering Mandate (Z-Index Bring-to-Front & Zero Face Covering)**:
+    - **Bring to Front (Strict Z-Index Layering)**: Text layers containing politicians' or speakers' names (e.g. Lalu Prasad Yadav, Rahul Gandhi) must ALWAYS be assigned a z-index (e.g. `zIndex: 100`) strictly **above** portrait image tracks and video clips. Names must **never** be placed beneath or obscured by portrait image layers.
+    - **Solid High-Contrast Name Plate**: Never use transparent or faint gradients that get washed out or hidden by white clothing, shirts, or backgrounds. Always insert a dedicated, solid dark Name Plate bar (`background: linear-gradient(90deg, #0e0204 0%, #1e0307 60%, #0e0204 100%)`) with a top accent border line (`2px solid <borderColor>`) separating the footage from the typography.
+    - **Fix Cropping & Face Clearance**: The portrait image must be positioned and scaled to sit comfortably in the viewport **above** the Name Plate (`flex: 1` viewport + docked name plate tier). The Name Plate must never cover the politician's chin, neck, or face, and the portrait must never obscure the text.
+
+---
+
+## 3. Advanced Broadcast Motion Graphics Architecture & Engineering
+
+To achieve top-tier television network broadcast standards (matching CNN, BBC, Aaj Tak, NDTV), all video productions must incorporate the following seven foundational motion graphics disciplines:
+
+1. **The Bug (Network Logo & Live Clock)**:
+   - A persistent, small graphic anchored strictly to the top right or bottom right (or top-left for master channel identifier).
+   - **Continuous Motion**: In a true news theme, this is never a static image; it features a slow continuous rotation or a sweeping light-glare sweep effect every 10 seconds.
+   - **Live Clock Urgency**: Integrating a ticking digital clock (e.g., `10:42:15 IST` / `LIVE`) right beside it instantly enforces authentic "live broadcast" urgency and breaking news authority.
+
+2. **Stingers and Bumpers**:
+   - High-energy, 2-to-3-second full-screen animations featuring 3D channel logos, sweeping anamorphic light flares, and heavy "whoosh" or metallic sound effects.
+   - **Segment Segmentation**: Deploy these strictly to break up distinct segments, transition into a major new topic, or introduce a "Breaking News" alert, ensuring a hard, professional cut rather than an amateurish soft crossfade.
+
+3. **Multi-Box / Split-Screen Grids**:
+   - When comparing two or three figures or depicting political conflict, **never float their photos in empty space**.
+   - **Rigid Sharp-Edged Grids**: Lock them into a rigid, sharp-edged 2-box or 3-box grid.
+   - **Metallic Borders & Live Status Badges**: Each box must have a distinct metallic or glowing border (e.g., green for RJD, blue for Congress, saffron for BJP), topped with a small, contrasting badge indicating location or status (e.g., a flashing red `🔴 LIVE: PATNA` or `🔴 LIVE: NEW DELHI` feed tag).
+
+4. **Full-Screen Quote Boards (FSG)**:
+   - When highlighting a critical statement, explosive revelation, or controversial quote, cut away from the video entirely to a dedicated **Full-Screen Graphic (FSG)**.
+   - **Graphic Composition**: Features a deep, looping dark studio background, a massive stylized quotation mark (`“`), the exact spoken or written statement in a bold, highly readable Devanagari/Latin font, and a high-quality cutout of the speaker anchored securely to the bottom corner.
+
+5. **3D Geospatial Locator Maps**:
+   - To establish a location, geographic context, or electoral constituency, replace flat 2D vector maps with 3D satellite imagery or 3D terrain that slowly and continuously zooms into a specific district or polling station.
+   - **3D Drop Pin & Animated Tag**: Add a glowing, dropping 3D pin and a sharp, animated text tag (e.g., `📍 PATNA // CONSTITUENCY #4`) to give the segment a high-budget, investigative documentary feel.
+
+6. **The Top "Sliver" Banner**:
+   - A very thin, solid-color bar running across the absolute top edge of the screen (`height: 32px to 40px`), serving as an architectural "roof" for your broadcast.
+   - **Overarching Framing**: It remains persistently on screen to frame the overarching context of the broadcast (e.g., `🔴 ELECTION 2026: COUNTING DAY` or `MEGA COVERAGE // SPECIAL REPORT`), perfectly balancing the heavy L-bands, Lower Thirds, and running tickers docked at the bottom.
+
+7. **Augmented Reality (AR) Data Pillars**:
+   - For top-tier data visualization (vote shares, seats won, comparison statistics), instead of flat boxes popping up, use **3D bar charts or data pillars** that appear to physically grow out of the floor of the news studio or street-level B-roll footage.
+   - **Camera Pan & Orbit**: The camera slightly pans or orbits around them, adding depth, cast shadows, and spatial realism to raw numbers.
 
 ---
 
 ## How to Edit This Skill
 
 This skill is fully editable. You can modify it at any time:
-1. **Direct File Edit**: Open and edit `SKILL.md` (or the global copy at `skills\news-video-16x9\SKILL.md`).
-2. **In Chat**: Ask the assistant: *"Update the news-video-16x9 skill to add rule X"* or *"Change the image duration rule in news-video-16x9 to Y seconds"*.
+1. **Direct File Edit**: Open and edit `d:\News\Clude news ai\.agents\skills\news-video-16x9\SKILL.md` (or global copy at `C:\Users\ahmad\.gemini\antigravity\skills\news-video-16x9\SKILL.md`).
+2. **In Chat**: Ask the assistant: *"Update the news-video-16x9 skill to add rule X"*.
 3. Any changes made to the `SKILL.md` file take effect immediately for all subsequent tasks.
-
