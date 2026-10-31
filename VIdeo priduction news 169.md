@@ -690,6 +690,80 @@ To achieve top-tier television network broadcast standards (matching CNN, BBC, A
         - *Active Idle*: Continuous bright sheen sweep loops across the filled bars. Slow 100% to 105% continuous push-in zoom across the frame. Subtle status pulse on badge.
         - *Exit*: Bars rapidly retract to 0% and cards collapse with digital glitch transition, cutting directly to full-screen B-roll video.
 
+---
+
+## 12. Motion Glassmorphism Design System for 16:9 Broadcast News (`motion-glassmorphism`)
+
+To produce television broadcast-grade visual elegance that matches premium international news packages (CNN, BBC, Bloomberg, NDTV), all lower thirds, multi-box grids, quote slabs, and data telemetry cards should leverage the **Motion Glassmorphism** design system (`motion-glassmorphism`).
+
+### 12.1 The 5-Layer Frosted Glass Contract (16:9 Architecture)
+
+When rendering graphic overlays over live B-roll footage or deep studio backdrops, follow the 5-layer physical optical glass model:
+
+1. **Layer 1: Background Blur & Saturation (`backdropFilter`)**:
+   - `backdropFilter: 'blur(24px) saturate(170%)'` (Remotion / CSS) or `ctx.filter = 'blur(35px) saturate(1.4)'` (HTML5 Canvas).
+   - This smoothly defocalizes high-contrast B-roll video beneath the graphic while amplifying color vibrancy by 40–70%, guaranteeing perfect Devanagari/Latin typography readability without muddy opacity.
+
+2. **Layer 2: Translucent Tint Fill**:
+   - Deep Studio / News Tint: `linear-gradient(135deg, rgba(10, 16, 26, 0.78) 0%, rgba(6, 10, 18, 0.88) 100%)`.
+   - Subtle Light Frost: `linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.08) 100%)`.
+   - *Strict Ban*: Never use 100% opaque black/grey boxes (destroys broadcast depth) or 100% transparent cutouts (unreadable over busy video).
+
+3. **Layer 3: Moving Specular Light Sheen (`skewX(-25deg)`)**:
+   - Every frosted glass element must feature an active light reflection sheen drifting across its surface.
+   - Sweep Math: Sync sheen progress with frame progress (`(frame % (fps * 3)) / (fps * 3)` for a 3-second sweep), translating an angled white sheen gradient (`skewX(-25deg)`) from left to right.
+
+4. **Layer 4: Specular Rim Border & Dual Drop Shadow**:
+   - Top-Rim Inset Highlight: `boxShadow: 'inset 0 1.5px 0 rgba(255, 255, 255, 0.55), 0 20px 48px -12px rgba(0, 0, 0, 0.70)'`.
+   - Border Stroke: `1px solid rgba(255, 255, 255, 0.55)` or channel accent color (`1.5px solid rgba(255, 215, 0, 0.65)` for Gold, `1.5px solid rgba(0, 229, 255, 0.65)` for Cyber Cyan, `1.5px solid rgba(255, 30, 39, 0.65)` for Alert Red).
+   - Border Radius: `16px` to `24px` for cards, `10px` for status badges.
+
+5. **Layer 5: Micro-Interaction Physics**:
+   - **Entrance**: Staggered spring/back-ease entry (`damping: 12, stiffness: 140` or `ease.back`).
+   - **Active Floating Hover**: Gentle continuous sine oscillation (`translateY = Math.sin((frame / fps) * 2 + index) * 6px`) to ensure cards never look frozen.
+   - **Telemetry Fills**: Progress bars, gauge fills, and poll percentages animate smoothly from `0%` to their target values.
+
+---
+
+### 12.2 Ambient Dynamic Color Blobs Backdrop (`GlassmorphicBlobsBackdrop`)
+
+Frosted glass needs rich color and contrast behind it to display its optical blur characteristics. When graphics appear on dedicated studio segments (FSGs, intro sequences, poll segments):
+
+- **The Color Blob Engine**:
+  Generate 3–4 large soft radial gradients drifting slowly on independent cosine/sine orbits:
+  - Primary Crimson (`#7F0203` / `#FF1E27`): Alert, breaking, investigative focus.
+  - Cyber Cyan (`#00E5FF`): Intelligence, tech, international diplomacy.
+  - Electric Gold (`#FFD700`): Authority, verified facts, News Fair accent.
+  - Deep Studio Void (`#060102` or `#080B10`): The base background.
+
+---
+
+### 12.3 Broadcast News Applications in 16:9 Landscape
+
+1. **Frosted Multi-Box Debate Grids (2-Box / 3-Box)**:
+   - Encase political leaders or contrasting viewpoints in floating frosted glass enclosures with specular glowing borders color-coded to political party / faction.
+   - Glowing live badge anchored to the top-left of each glass box (`🔴 LIVE: NEW DELHI`).
+
+2. **Full-Screen Quote Boards (FSG) with Frosted Document Slabs**:
+   - Massive frosted glass document slab ($1280 	imes 720 	ext{ px}$) centered over floating ambient color blobs.
+   - Large translucent quotation mark (`"`) embedded in the glass.
+   - Synced marker highlight wipes across key phrases as spoken by narration.
+
+3. **Live Lower-Third Data Ticker & Anchored Docks**:
+   - Bottom ticker bar ($1920 	imes 84 	ext{ px}$) rendered in frosted glass: `backdropFilter: blur(20px) saturate(160%)`, `backgroundColor: rgba(6, 12, 18, 0.85)`.
+   - Specular top rim border with gold/crimson accent line (`height: 2px, background: linear-gradient(...)`).
+
+4. **Augmented Reality (AR) Frosted Glass Election Tally Boards**:
+   - Vertical frosted glass tally cards for seat counts / vote shares.
+   - Dynamic fill animation on progress bars with live counting numbers (`lerp` from 0 to final tally).
+
+---
+
+### 12.4 Deterministic Execution Contract
+
+- **Zero Non-Deterministic Calls**: Never use `Math.random()` or `Date.now()`. Use seeded pseudorandom functions or deterministic timeline frame formulas (`frame / fps`).
+- **Hardware Acceleration**: Always include `WebkitBackdropFilter` alongside `backdropFilter` and `transform: 'translateZ(0)'` for GPU-accelerated compositing in Remotion and Chromium.
+---
 
 ## How to Edit This Skill
 
