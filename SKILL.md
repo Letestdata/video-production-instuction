@@ -641,6 +641,8 @@ In `indiainlast24hr`, **every cut, line draw, and card pop is driven by an audio
 
 ## 9. Brand Sheet Review & Evaluation Framework (Shorts & Reels Audit Standard)
 
+### **Brand Sheet Review for israel_election_mossad_short_9x16.mp4**
+
 #### **1. Editorial Structure Analysis**
 
 **Expected Opening (0:05-0:30 / 5%-15% of runtime)**
@@ -836,3 +838,174 @@ When reviewing the actual video, use this checklist:
 - [ ] Proper aspect ratio and formatting
 - [ ] Color consistency throughout
 
+
+---
+
+## 10. The "News Fair" Edition Style & Motion Standards (The 4 Core Disciplines)
+
+To elevate investigative news shorts and reels from standard edits to high-end, reference-grade viral motion documentaries, the following 4 core disciplines must be applied across every scene:
+
+### 10.1 Text Color & Style Specification (The "News Fair" Premium Look)
+Avoid flat white text. Use deliberate contrast gradients and ambient glow integration:
+
+1. **Investigative Headlines (e.g. "मोसाद की एंट्री", "विदेशी दखल"):**
+   - **Gradient**: Gold-to-Orange gradient (`#FFD700` to `#FF8C00`) rendered via `background: linear-gradient(180deg, #FFD700 0%, #FF8C00 100%)`, `-webkit-background-clip: text`, `-webkit-text-fill-color: transparent`.
+   - **Glow & Depth**: Apply a soft black ambient glow (`textShadow: "0 0 14px rgba(0,0,0,0.85)"` or drop-shadow filter) rather than harsh outlines, making text feel organically integrated into the broadcast scene.
+   - **Devanagari Font**: Use `Baloo Bhai 2` (weight: 800–900).
+
+2. **Breaking / Urgent Alert Badges (e.g. "बड़ी खबर", "CONFIDENTIAL"):**
+   - **Badge Background**: Crimson-Alert Red gradient (`#7F0203` to `#FF1E27`).
+   - **Badge Typography**: Pure white (`#FFFFFF`) with bold tracking (`letterSpacing: 1.5px`), font weight 900, with 6–8px padding and subtle border radius (6px).
+
+3. **Emphasis Words within Captions & Spoken Cues:**
+   - **Color**: Vibrant Gold (`#FFD700`).
+   - **Dynamic Kinetic Pop**: Apply a subtle, frame-accurate scale-up pop (`scale: 1.05` to `1.08`) exactly on the spoken syllable, pulling viewer focus instantly to the critical entity or figure.
+
+---
+
+### 10.2 The "2-Second Rule" (Dynamic Editing Rhythm)
+- **Strict Cut Ceiling**: Every B-roll clip, document view, or editorial image must have a strict lifespan of **2.0 to 3.0 seconds maximum**.
+- **Clause-Driven Cuts**: Every time the narrator pauses, takes a breath, or moves to a new clause, the on-screen visual **must change**.
+- **Zero Lingering**: Never let any shot linger for 4–5 seconds. If a talking point requires 6 seconds, split it into two complementary visual perspectives (e.g., Wide shot -> Extreme close-up / Document -> Red pill stat).
+
+---
+
+### 10.3 The "Motion Manifesto" (Camera Movement Cycling)
+Static still photos are the primary killer of investigative news retention. Every single still image and background canvas must cycle through this 5-motion sequence:
+1. `zoom_in_center`: Continuous slow push-in (`scale: 1.00` to `1.10`, centered).
+2. `pan_right_to_left`: Horizontal documentary drift (`translateX: 0px` to `-45px`).
+3. `zoom_out_center`: Reveal pull-back (`scale: 1.10` to `1.00`).
+4. `pan_left_to_right`: Counter horizontal drift (`translateX: -40px` to `+10px`).
+5. `fast_push`: Aggressive punch-in on high-stakes reveals (`scale: 1.00` to `1.18` with motion blur feel).
+
+---
+
+### 10.4 Graphic Animation Physics (Mass, Spring, and Momentum)
+Linear easing (`linear`) makes motion graphics feel like a corporate presentation. Every on-screen element must behave like a physical object with weight and inertia:
+- **Standard Card / UI Entrance**:
+  ```tsx
+  const scale = spring({
+    frame: relFrame,
+    fps,
+    config: { damping: 12, stiffness: 140, mass: 0.8 },
+  });
+  ```
+- **High-Impact Red Pill Badges & Status Stamps**:
+  ```tsx
+  const stampSpring = spring({
+    frame: relFrame,
+    fps,
+    config: { damping: 11, stiffness: 350, mass: 0.6 },
+  });
+  ```
+- **Active Idle Motion**: Once landed, graphics must never freeze. They maintain a continuous micro-zoom (`100% -> 104%`), a subtle pulsing border glow (`Math.sin(frame * 0.1) * 12`), and moving background textures.
+
+---
+
+### 10.5 Broadcast Audio Mix & Master Sound Effects Library
+
+1. **Dynamic VO Sidechain Ducking**:
+   - The dark 120–125 BPM analog synth pulse BGM must dynamically duck by **`-16 dB` to `-18 dB`** precisely when the voiceover speaks.
+   - When the voiceover stops (or during cold-open impact cards), the BGM snaps back up by +4dB to drive tension.
+
+2. **Transition & Cut Sound Design**:
+   - Every single cut between scenes must have an accompanying sound effect: a snappy air whoosh, camera shutter click, or low-end sub-thud.
+
+3. **Master Local Sound Effects Asset Bank**:
+   All production audio should draw from the local master sound effects repository located at:
+   - **Primary Directory**: `D:\Phone data\Sound Effects`
+   - **Key Categories Available**:
+     - `Essential SFX\Marker` & `For highlighter (write`: Felt-tip and highlighter squeaks for 3D document reveals.
+     - `Essential SFX\Paper` & `rustle`: Physical newsprint, document unrolls, and page turns.
+     - `Essential SFX\Pops` & `Interface Sounds`: Snappy UI bubble pops and card plops.
+     - `Essential SFX\Risers+Hits`: Cinematic sub-bass booms, impact slams, and riser whooshes.
+     - `Essential SFX\Transition Whoosh` & `Small Whoosh`: Directional camera whips and rapid scene shifts.
+     - `Essential SFX\Shutters and other camera sounds`: Investigative surveillance and evidence reveals.
+     - `Essential SFX\Datacountinggraphs`: Digital blips, counter ticks, and data telemetry.
+     - `Essential SFX\GlitchstaticTV` & `Glitch`: CRT scanlines, cyber glitches, and signal interrupts.
+     - `Essential SFX\Mouse Click` & `Mouse+Keyboard`: Outro call-to-action clicks and hacker terminal typing.
+
+
+---
+
+## 11. Multi-Frame Reference Style Specifications (STYLE.md Master Integration)
+
+*Directly extracted from multi-frame visual and audio analysis of benchmark reference reels (`video1.mp4`, `video3.mp4`, `video4.mp4`, `video5.mp4`):*
+
+### 11.1 Typography Hierarchy & Explicit Font Sizing
+*   **Font Pairing**:
+    *   **Primary Devanagari Font**: `Baloo 2` (ExtraBold / Bold) or `Rajdhani` (Bold)
+    *   **Primary Latin / English Font**: `Montserrat` (Black / ExtraBold) or `Poppins` (Bold)
+*   **Exact Hierarchy & Size Matrix**:
+    *   **Category Badge / Pill Tag**: `20px – 24px` (All Caps, SemiBold, e.g., `● EXCLUSIVE`, `● BREAKING`)
+    *   **Main Headline Hook**: `42px – 52px` (ExtraBold, strict `1.1 line-height`)
+    *   **Subheadline / Context**: `26px – 32px` (Bold)
+    *   **Word-by-Word / Short Captions**: `32px – 40px` (Bold / ExtraBold)
+
+### 11.2 Functional Tri-Color Hierarchy & Semantic Coding
+To ensure instantaneous readability and visual retention against rapid cutting footage, text follows a strict high-contrast functional hierarchy:
+*   **Base Text**: Pure White (`#FFFFFF`) or Off-White (`#F5F5F7`)
+*   **Primary Accent / Punchline**: Electric Yellow / Gold (`#FFD700` / `#FFE600`) — used for key names, dates, financial figures, and core action verbs.
+*   **Secondary Alert / Threat**: Vivid Crimson Red (`#FF1E27` / `#FF0000`) — used for alerts, denials, casualties, and crisis tags (preferred over muted red `#E50914`).
+*   **Information & Intelligence Accent**: Cyber Cyan (`#00E5FF` / `#00B0FF`) — specifically reserved for agency names (*Mossad*, *Shin Bet*, *CISA*), geographic locations, and telemetry coordinates.
+*   **Text Shadows & Legibility**: `2px – 3px` dark stroke or drop-shadow (`rgba(0, 0, 0, 0.85)`) for flawless legibility across high-brightness background media.
+
+### 11.3 Color Palette & Surface Treatment (Confirmed from Frames)
+All reference reels operate on very dark base canvases (82%–84% of frame pixels are dark with luminance <64):
+*   **Background Base**: Dark Obsidian / Deep Charcoal (`#060102` / `#0B0E14` / `#121310`)
+*   **Glassmorphic Card Fills**: `rgba(12, 18, 21, 0.88)` to `rgba(20, 20, 25, 0.92)`
+*   **Emissive Border Trims**: `1.5px – 2px` subtle glowing borders:
+    *   **Gold Trim**: `rgba(255, 215, 0, 0.4)`
+    *   **Red Alert Trim**: `rgba(255, 30, 39, 0.4)`
+    *   **Neutral Trim**: `rgba(255, 255, 255, 0.15)`
+*   **Accent Glows**: Soft radial backlights behind focal subjects, agency crests, or cards (`rgba(255, 215, 0, 0.12)`).
+
+### 11.4 Mandatory 9:16 Mobile UI Safe Zones (1080×1920)
+Mobile platforms (Instagram Reels, YouTube Shorts) place UI overlays (handles, sound titles, like/share icons) that obscure edge content. All graphics, text, and critical focal elements must stay strictly within safe bounds:
+*   **Top Safe Margin**: Keep **180px clear** from the top edge (system status bar, app navigation headers).
+*   **Bottom Safe Margin**: Keep **280px clear** from the bottom edge (account username, audio disc, caption excerpt, timeline scrubber).
+*   **Right Safe Margin**: Keep **130px clear** from the right edge (Like, Comment, Share, Remix buttons).
+*   **Primary Action Safe Zone**: Width `X: 80px to 1000px`, Height `Y: 220px to 1640px`.
+
+### 11.5 Captioning & Speech Sync Rules
+*   **Vertical Placement**: Centered in the lower-middle zone (`Y: 62%` to `Y: 75%` from the top, sweet spot at `Y: 68%`).
+*   **Word Density**: Strictly **2 to 4 words per cue/line** (never long paragraphs or multi-line blocks).
+*   **Motion**: Fast spring pop-in (`damping: 15, stiffness: 160`) or snappy 0.1s scale-up.
+*   **Active Word Pop**: The active spoken word illuminates in **Electric Gold** (`#FFD700`) with a subtle pill container background behind the active phrase.
+
+### 11.6 Transitions, Editing Rhythm & Ken Burns Motion
+*   **Cut Frequency**: Rapid editing pace with visual shifts occurring strictly every **1.8 to 3.2 seconds**.
+*   **Transition Types**:
+    *   **Direct Hard Cut**: Between B-roll footage and document stills.
+    *   **Subtle 0.2s Cross-Dissolve**: When transitioning between major thematic timeline phases.
+*   **Camera Motion (Ken Burns)**:
+    *   Still images never remain static.
+    *   Continuous alternating motion sequence: `zoom_in` (1.00 → 1.08), `pan_left_to_right`, `zoom_out` (1.08 → 1.01), `pan_right_to_left`, `diagonal_drift`.
+
+### 11.7 Sound Design & Audio Mix Levels
+*   **Voiceover**: Dominant, authoritative, centered mono, normalized to `-1.0 dB` peak ceiling.
+*   **Background Music (BGM)**: Low-pass filtered investigative drone/synth pulse (filter cutoff 3.2 kHz to avoid vocal frequency competition), ducked dynamically to **`-18 dB` to `-22 dB`** beneath narration.
+*   **Sound Effects (SFX)**:
+    *   **Level**: Balanced between `-6 dB` and `-10 dB`.
+    *   **Low Bass Boom / Drop**: Hits precisely on major headline hooks and cold-open impact cards.
+    *   **High-Tech Swoosh / Pass**: Accompanying all graphic slide-ins and visual transitions.
+    *   **Camera Shutter / Paper Rustle**: Layered on document reveals and classified photo pop-ups.
+    *   **Marker Squeak**: Stereo left-to-right swipe on text highlights.
+    *   **Rubber Stamp Slam**: Heavy wood/metal thud on status cards (`DENIED`, `ARRESTED`).
+
+---
+
+### 11.8 Master Quick-Reference Matrix (STYLE.md Reference Contract)
+
+| Production Element | Reference Gold Standard Specification |
+| :--- | :--- |
+| **Canvas & Frame Rate** | `1080 × 1920 px` (9:16 Portrait) @ 30 FPS |
+| **Font Pairing** | `Baloo 2` (Devanagari) + `Montserrat` (Latin) |
+| **Core Color Palette** | Dark Obsidian (`#060102`), Pure White (`#FFFFFF`), Electric Gold (`#FFD700`), Vivid Crimson (`#FF1E27`), Cyber Cyan (`#00E5FF`) |
+| **Headline Hook** | `42px – 52px`, ExtraBold, `1.1 line-height`, Gold-to-Orange gradient or white with 2–3px drop-shadow |
+| **Pill Tags / Badges** | `20px – 24px`, All Caps, SemiBold, Crimson-Alert Red gradient background (`#7F0203` to `#FF1E27`) |
+| **Captions** | Strictly 2–4 words per cue, centered at `Y: 68%`, active word highlighted in `#FFD700` |
+| **Safe Margins** | Top: 180px, Bottom: 280px, Right: 130px, Focal Zone: `80–1000px × 220–1640px` |
+| **Pacing & Cuts** | Strict cuts every `1.8 – 3.2 seconds`, alternating 5-motion Ken Burns on all stills |
+| **Audio Mix** | VO: `-1.0 dB`, BGM: `-18 dB to -22 dB` (ducked), SFX: `-6 dB to -10 dB` (all wrapped in `<Sequence>`) |
+| **Local SFX Bank** | `D:\Phone data\Sound Effects` (`Essential SFX` subfolders: `Marker`, `Paper`, `Pops`, `Risers+Hits`, `Transition Whoosh`, `Shutters`) |
