@@ -635,3 +635,206 @@ In `indiainlast24hr`, **every cut, line draw, and card pop is driven by an audio
    - Normalize voiceover to `-1.0 dB`, add aggressive compression (`4:1` to `6:1`) to make the vocal up-front and dry.
    - Sidechain dark synth pulse BGM underneath so it ducks by `-14 dB` whenever the speaker talks.
    - **MANDATORY REMOTION SFX RULE**: In Remotion, NEVER conditionally render SFX like `{frame === 0 && <Audio .../>}` because unmounting after 1 frame cuts the audio off after 33ms! Every sound effect MUST be mounted inside a `<Sequence from={triggerFrame} durationInFrames={durFrames}>` so the full sound wave plays to completion.
+
+
+---
+
+## 9. Brand Sheet Review & Evaluation Framework (Shorts & Reels Audit Standard)
+
+### **Brand Sheet Review for israel_election_mossad_short_9x16.mp4**
+
+#### **1. Editorial Structure Analysis**
+
+**Expected Opening (0:05-0:30 / 5%-15% of runtime)**
+- **What to look for**: Immediate investigative hook with Mossad entrance announcement
+- **Reference standard**: Dynamic cuts every 2-3 seconds, urgent voiceover
+- **Brand compliance check**: 
+  - Does the opening immediately establish foreign interference investigation?
+  - Is there clear indication of Mossad's new involvement?
+  - Is the pacing fast and punchy?
+
+**Story Flow (0:30-2:00 / 15%-35% of runtime)**
+- **Investigation section**: Context about who, what, when, where
+- **Visual elements**: Split-screen, multiple perspectives
+- **Pacing check**: Should maintain momentum with tight cuts and graphics every 1.5–2.5s
+
+**International Dimension (2:00-3:30 / 35%-50% of runtime)**
+- **Qatar/Turkey focus**: Their involvement and denial of allegations
+- **Visual treatment**: Maps, news tickers, direct quotes
+- **Color emphasis**: Gold/yellow highlights for emphasis
+
+**Institutional Response (3:30-5:00 / 50%-65% of runtime)**
+- **Central Elections Committee**: Formal statements
+- **Visual treatment**: Official footage, clean text boxes
+- **Typography**: Larger, bolder for authority
+
+**Legal Action (5:00-6:30 / 65%-75% of runtime)**
+- **Police arrests**: Three bribery arrests
+- **Visual evidence**: Police footage, arrest scenes
+- **Sound**: Audio of announcements if available
+
+**Origins (6:30-8:00 / 75%-85% of runtime)**
+- **PMO tip**: Edward Narden's information
+- **Visual**: Document footage, PMO imagery
+- **Narrative**: Behind-the-scenes revelations
+
+**Conclusion (8:00-9:50 / 85%-100% of runtime)**
+- **Impact**: Broader significance of investigation
+- **Visual**: Summary graphics, key takeaways
+- **Audio**: Resolute, confident closing
+
+---
+
+#### **2. Visual Treatment Standards**
+
+**Typography & Text**
+- **Hindi/English mix**: Strong, readable with clear hierarchy
+- **Font choice**: Baloo Bhai 2 for Devanagari, English for clarity
+- **Size hierarchy**: Headlines largest, body text medium, lower thirds smaller
+- **Color contrast**: White text with black outlines for readability
+
+**Motion Graphics**
+- **Animation style**: Spring physics, smooth entry/exit
+- **Pacing**: 2-4 seconds for key moments, faster for transitions
+- **Color coding**: Red for authority, gold for emphasis, white for clarity
+
+---
+
+#### **3. Audio Quality Standards**
+
+**Voiceover**
+- **Clarity**: Clear, authoritative narration
+- **Emphasis**: Strategic emphasis on key terms
+- **Timing**: Synced perfectly with visual beats
+
+**Sound Design**
+- **SFX**: Strategic effects for dramatic moments
+- **Background**: Ambient support without overwhelming
+- **Mix**: Professional broadcast quality levels
+
+---
+
+#### **4. Technical Specifications**
+
+**Video Format**
+- **Resolution**: 1080×1920 (9:16 portrait)
+- **FPS**: 30
+- **Codec**: H.264
+- **Bitrate**: Professional broadcast quality
+
+**Audio Specifications**
+- **Sample Rate**: 48kHz
+- **Channels**: Stereo
+- **Bit Rate**: High quality
+
+---
+
+#### **5. Editing Rhythm Analysis**
+
+**From Reference Videos** (Key patterns to emulate):
+- **Fast opening**: Immediate hook with 2-3 second cuts
+- **Punchy cuts**: Tight continuity between footage types
+- **Strategic slow-motion**: For emphasis moments
+- **Smooth transitions**: Seamlessly between segments
+
+**What to Check in Your Video**:
+- [ ] Opening sequence is immediate and punchy (0:05-0:30)
+- [ ] Cuts are tight and maintain story momentum
+- [ ] Graphics enhance rather than distract
+- [ ] Text hierarchy is clear and readable
+- [ ] Color palette follows brand guidelines
+- [ ] Audio levels are balanced and clear
+- [ ] Transitions are smooth and purposeful
+
+---
+
+#### **6. Visual Treatment Review**
+
+**Opening Sequence** (0:05-0:30)
+- **Mossad branding**: Should include Mossad logo or security footage
+- **Text elements**: Hindi/English headlines with strong impact
+- **Pacing**: Dynamic cuts every 2-3 seconds
+
+**Investigation Section** (0:30-2:00)
+- **Split-screen**: Multiple perspectives showing investigation
+- **Graphics**: Simple data visualizations, timeline elements
+- **Color coding**: Different colors for different entities
+
+**International Dimension** (2:00-3:30)
+- **Maps**: Visual representation of Qatar/Turkey
+- **News tickers**: Running graphics with updates
+- **Emphasis**: Gold/yellow highlighting for key points
+
+**Graphics Standards**
+- **Style**: Clean, information-focused design
+- **Animation**: Spring physics, smooth transitions
+- **Placement**: Strategic positioning (lower thirds, overlays)
+- **Timing**: Synced with audio beats
+
+---
+
+#### **7. Audio Quality Review**
+
+**Voiceover**
+- **Clarity**: Should be crystal clear with proper enunciation
+- **Emphasis**: Strategic emphasis on key terms like "Mossad," "Qatar," "Turkey"
+- **Pacing**: Natural rhythm matching story beats
+
+**Sound Design**
+- **SFX**: Appropriate effects for dramatic moments (arrests, announcements)
+- **Background**: Ambient support without overwhelming dialogue
+- **Mix**: Professional separation between elements
+
+---
+
+#### **8. Technical Quality Check**
+
+**Video Quality**
+- **Sharpening**: Should be broadcast quality with good detail
+- **Color grading**: Consistent with brand palette
+- **Stability**: Steady shots with intentional camera movement
+
+**Audio Quality**
+- **Levels**: Balanced across all segments
+- **Clarity**: No background noise interfering with speech
+- **Mix**: Professional separation between elements
+
+---
+
+### **Specific Areas for Improvement**
+
+Based on the reference video analysis, here are key areas where your video may need enhancement:
+
+1. **Opening Speed**: Ensure immediate hook within first 2 seconds
+2. **Cut Pacing**: Reduce static shots, increase continuity
+3. **Graphics**: Simplify to be more information-focused
+4. **Typography**: Upgrade to match reference video's hierarchy
+5. **Color Treatment**: Align with broadcast aesthetic
+6. **Audio Balance**: Professionalize audio mixing
+7. **Pacing**: Maintain momentum throughout all segments
+
+---
+
+### **Final Assessment Framework**
+
+When reviewing the actual video, use this checklist:
+
+**Visual Elements** ✅
+- [ ] Opening hook immediate and impactful
+- [ ] Text hierarchy clear and readable
+- [ ] Color palette consistent with brand
+- [ ] Graphics enhance story rather than distract
+- [ ] Motion graphics purposeful and timed
+
+**Audio Quality** ✅
+- [ ] Voiceover clarity excellent
+- [ ] Sound effects strategic and effective
+- [ ] Balanced audio mix
+- [ ] Synced with visual elements
+
+**Technical Standards** ✅
+- [ ] Broadcast quality video
+- [ ] Professional audio production
+- [ ] Proper aspect ratio and formatting
+- [ ] Color consistency throughout
+
