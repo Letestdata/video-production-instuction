@@ -641,8 +641,6 @@ In `indiainlast24hr`, **every cut, line draw, and card pop is driven by an audio
 
 ## 9. Brand Sheet Review & Evaluation Framework (Shorts & Reels Audit Standard)
 
-### **Brand Sheet Review for israel_election_mossad_short_9x16.mp4**
-
 #### **1. Editorial Structure Analysis**
 
 **Expected Opening (0:05-0:30 / 5%-15% of runtime)**
