@@ -434,6 +434,111 @@ export const StatusStamp: React.FC<StatusStampProps> = ({
 };
 ```
 
+
+### Component 5: Frosted Glass Container (GlassmorphicCard.tsx)
+`	sx
+import React from 'react';
+import { useCurrentFrame } from 'remotion';
+
+interface GlassmorphicCardProps {
+  width: number;
+  height: number;
+  borderColor?: string;
+  glowColor?: string;
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+}
+
+export const GlassmorphicCard: React.FC<GlassmorphicCardProps> = ({
+  width,
+  height,
+  borderColor = 'rgba(255, 255, 255, 0.45)',
+  glowColor = 'rgba(255, 255, 255, 0.1)',
+  children,
+  style,
+}) => {
+  const frame = useCurrentFrame();
+  const sheenProgress = (frame % 75) / 75;
+  const sheenX = -width + sheenProgress * (width * 3);
+
+  return (
+    <div
+      style={{
+        position: 'relative',
+        width,
+        height,
+        borderRadius: 24,
+        background: 'rgba(10, 16, 26, 0.72)',
+        backdropFilter: 'blur(24px) saturate(170%)',
+        WebkitBackdropFilter: 'blur(24px) saturate(170%)',
+        border: 1.5px solid ,
+        boxShadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.55), 0 20px 48px -12px rgba(0, 0, 0, 0.70), 0 0 30px ,
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        ...style,
+      }}
+    >
+      {/* Moving Specular Sheen (skewX(-25deg)) */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          bottom: 0,
+          left: sheenX,
+          width: width * 0.6,
+          background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.18) 50%, transparent 100%)',
+          transform: 'skewX(-25deg)',
+          pointerEvents: 'none',
+        }}
+      />
+      {children}
+    </div>
+  );
+};
+`
+
+### Component 6: Ambient Moving Blobs Backdrop (GlassmorphicBlobsBackdrop.tsx)
+`	sx
+import React from 'react';
+import { AbsoluteFill, useCurrentFrame } from 'remotion';
+
+export const GlassmorphicBlobsBackdrop: React.FC<{
+  blobs?: Array<{ xPercent: number; yPercent: number; color: string; radius: number; speed?: number }>;
+}> = ({ blobs }) => {
+  const frame = useCurrentFrame();
+  const T = (frame / 180) * (Math.PI * 2);
+
+  const defaultBlobs = [
+    { x: 1080 * 0.28 + Math.cos(T) * 120, y: 1920 * 0.30 + Math.sin(T) * 100, color: '#FF1E27', radius: 480 },
+    { x: 1080 * 0.75 + Math.cos(T * 0.85 + 2) * 140, y: 1920 * 0.44 + Math.sin(T * 0.85) * 110, color: '#00E5FF', radius: 520 },
+    { x: 1080 * 0.45 + Math.cos(T * 1.1 + 4) * 110, y: 1920 * 0.74 + Math.sin(T * 1.1) * 90, color: '#FFD700', radius: 440 },
+  ];
+
+  return (
+    <AbsoluteFill style={{ overflow: 'hidden', backgroundColor: '#060102', zIndex: 0 }}>
+      {defaultBlobs.map((b, i) => (
+        <div
+          key={i}
+          style={{
+            position: 'absolute',
+            left: b.x - b.radius,
+            top: b.y - b.radius,
+            width: b.radius * 2,
+            height: b.radius * 2,
+            borderRadius: '50%',
+            background: 
+adial-gradient(circle,  0%, transparent 70%),
+            opacity: 0.38,
+            filter: 'blur(60px)',
+            pointerEvents: 'none',
+          }}
+        />
+      ))}
+    </AbsoluteFill>
+  );
+};
+`
 ---
 
 ## 6. End-to-End Production Workflow
@@ -914,6 +1019,7 @@ Linear easing (`linear`) makes motion graphics feel like a corporate presentatio
 3. **Master Local Sound Effects Asset Bank**:
    All production audio should draw from the local master sound effects repository located at:
    - **Primary Directory**: `D:\Phone data\Sound Effects`
+| **Master Render Policy** | Direct master .mp4 video render via Remotion / FFmpeg. **Do NOT generate Premiere Pro (.prproj) or XML files** for every project unless explicitly requested by the user. |
    - **Key Categories Available**:
      - `Essential SFX\Marker` & `For highlighter (write`: Felt-tip and highlighter squeaks for 3D document reveals.
      - `Essential SFX\Paper` & `rustle`: Physical newsprint, document unrolls, and page turns.
@@ -1009,3 +1115,171 @@ Mobile platforms (Instagram Reels, YouTube Shorts) place UI overlays (handles, s
 | **Pacing & Cuts** | Strict cuts every `1.8 – 3.2 seconds`, alternating 5-motion Ken Burns on all stills |
 | **Audio Mix** | VO: `-1.0 dB`, BGM: `-18 dB to -22 dB` (ducked), SFX: `-6 dB to -10 dB` (all wrapped in `<Sequence>`) |
 | **Local SFX Bank** | `D:\Phone data\Sound Effects` (`Essential SFX` subfolders: `Marker`, `Paper`, `Pops`, `Risers+Hits`, `Transition Whoosh`, `Shutters`) |
+
+
+---
+
+## 12. Motion Glassmorphism Design System for 9:16 Shorts & Reels (`motion-glassmorphism`)
+
+To bring the premium tactile aesthetics of modern consumer mobile UIs (Apple iOS, Arc, Dynamic Island) and investigative documentaries (`indiainlast24hr`) into 9:16 vertical shorts, all agency comparison cards, diplomatic profile cards, and interactive polling widgets must implement the **Motion Glassmorphism** design system.
+
+### 12.1 The 5-Layer Frosted Glass Contract (9:16 Mobile Architecture)
+
+In mobile vertical video (`1080 × 1920`), graphics must instantly stand out over busy vertical B-roll or dark studio maps without creating visual fatigue or opaque clutter. Follow the 5-layer optical standard:
+
+1. **Layer 1: Background Blur & Vibrancy Saturation**:
+   ```css
+   backdrop-filter: blur(24px) saturate(170%);
+   -webkit-backdrop-filter: blur(24px) saturate(170%);
+   ```
+   - Blurs background satellite maps, police strobes, or crowds into a smooth, cinematic bokeh.
+   - The saturation boost (+70%) ensures colors behind the glass look luminous rather than washed out.
+
+2. **Layer 2: Translucent Tint Fill**:
+   - Deep Frosted Obsidian Glass: `rgba(10, 16, 26, 0.72)` to `rgba(6, 12, 18, 0.88)`.
+   - Subtle White Frosted Glass: `linear-gradient(135deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.10) 100%)`.
+
+3. **Layer 3: Moving Specular Light Sheen (`skewX(-25deg)`)**:
+   - An angled reflection sheen continuously travels across the surface of every glass card, creating the tactile impression of real polished glass under studio lighting:
+   ```tsx
+   const sheenProgress = (frame % 75) / 75; // 2.5-second loop
+   const sheenX = interpolate(sheenProgress, [0, 1], [-width, width * 2]);
+   ```
+   - Styled with `background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%)`, `transform: skewX(-25deg)`.
+
+4. **Layer 4: Specular Rim Border & Glow Boundaries**:
+   - **Specular Top Rim**: `boxShadow: 'inset 0 1.5px 0 rgba(255, 255, 255, 0.55), 0 20px 48px -12px rgba(0, 0, 0, 0.70)'`. Simulates physical top-edge light bounce.
+   - **Emissive Colored Stroke**: `1.5px solid rgba(0, 229, 255, 0.75)` (Shin Bet / Intelligence Cyan) or `rgba(255, 30, 39, 0.75)` (Mossad Crimson) or `rgba(255, 215, 0, 0.75)` (Gold).
+
+5. **Layer 5: Micro-Interaction Physics (Spring Entrance & Floating Sine Hover)**:
+   - **Spring Entrance**: Use spring physics (`damping: 12, stiffness: 140`) with back-ease overshoot:
+     ```tsx
+     const scale = spring({ frame: frame - enterFrame, fps, config: { damping: 12, stiffness: 140 } });
+     ```
+   - **Ambient Floating Sine Wave**:
+     ```tsx
+     const floatY = Math.sin((frame / fps) * 2 + index) * 8; // 8px gentle vertical hover
+     ```
+   - **Interactive Telemetry Fills**: Progress bars and percentages animate smoothly up from `0%` to their target values.
+
+---
+
+### 12.2 Ambient Dynamic Color Blobs Backdrop (`GlassmorphicBlobsBackdrop`)
+
+Frosted glass cards require vivid ambient light sources behind them to refract optical gradients. For non-video background scenes (dossiers, intro hooks, interactive outro polls), place `GlassmorphicBlobsBackdrop`:
+
+```tsx
+// 3 Large soft radial gradient blobs drifting organically behind glass:
+const T = (frame / 180) * (Math.PI * 2);
+const blob1 = { x: 1080 * 0.30 + Math.cos(T) * 120, y: 1920 * 0.28 + Math.sin(T) * 100, color: '#FF1E27', radius: 450 };
+const blob2 = { x: 1080 * 0.72 + Math.cos(T * 0.8 + 2) * 140, y: 1920 * 0.42 + Math.sin(T * 0.8) * 120, color: '#00E5FF', radius: 480 };
+const blob3 = { x: 1080 * 0.45 + Math.cos(T * 1.1 + 4) * 100, y: 1920 * 0.75 + Math.sin(T * 1.1) * 90, color: '#FFD700', radius: 420 };
+```
+
+---
+
+### 12.3 Reusable Remotion Components for 9:16 Shorts
+
+#### Component A: `GlassmorphicCard`
+```tsx
+export const GlassmorphicCard: React.FC<{
+  width: number;
+  height: number;
+  borderColor?: string;
+  glowColor?: string;
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+}> = ({ width, height, borderColor = 'rgba(255, 255, 255, 0.45)', glowColor = 'rgba(255, 255, 255, 0.1)', children, style }) => {
+  const frame = useCurrentFrame();
+  const sheenProgress = (frame % 75) / 75;
+  const sheenX = -width + sheenProgress * (width * 3);
+
+  return (
+    <div
+      style={{
+        position: 'relative',
+        width,
+        height,
+        borderRadius: 24,
+        background: 'rgba(10, 16, 26, 0.72)',
+        backdropFilter: 'blur(24px) saturate(170%)',
+        WebkitBackdropFilter: 'blur(24px) saturate(170%)',
+        border: `1.5px solid ${borderColor}`,
+        boxShadow: `inset 0 1.5px 0 rgba(255, 255, 255, 0.55), 0 20px 48px -12px rgba(0, 0, 0, 0.7), 0 0 30px ${glowColor}`,
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        ...style,
+      }}
+    >
+      {/* Moving Specular Sheen */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          bottom: 0,
+          left: sheenX,
+          width: width * 0.6,
+          background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.18) 50%, transparent 100%)',
+          transform: 'skewX(-25deg)',
+          pointerEvents: 'none',
+        }}
+      />
+      {children}
+    </div>
+  );
+};
+```
+
+#### Component B: Interactive Frosted Glass Poll Widget (`GlassmorphicPollWidget`)
+```tsx
+export const GlassmorphicPollWidget: React.FC<{
+  question: string;
+  option: string;
+  targetPercent: number;
+  enterFrame: number;
+}> = ({ question, option, targetPercent, enterFrame }) => {
+  const frame = useCurrentFrame();
+  const fps = 30;
+  const animProgress = interpolate(frame, [enterFrame + 10, enterFrame + 40], [0, 1], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  });
+  const currentPercent = Math.round(animProgress * targetPercent);
+
+  return (
+    <GlassmorphicCard width={920} height={460} borderColor="rgba(255, 215, 0, 0.65)" glowColor="rgba(255, 215, 0, 0.25)">
+      <div style={{ padding: '36px 48px', display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <div style={{ alignSelf: 'center', background: '#FF1E27', padding: '6px 20px', borderRadius: 10, color: '#fff', fontSize: 20, fontWeight: 900 }}>
+          NEWS FAIR POLL // जनता की राय
+        </div>
+        <div style={{ fontSize: 44, fontWeight: 900, textAlign: 'center', margin: '24px 0 32px', background: 'linear-gradient(180deg, #FFFFFF 0%, #FFD700 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+          {question}
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 12, fontSize: 24, fontWeight: 800, color: '#FFD700' }}>
+          <span>{option}</span>
+          <span>{currentPercent}%</span>
+        </div>
+        <div style={{ width: '100%', height: 16, background: 'rgba(255,255,255,0.15)', borderRadius: 8, overflow: 'hidden' }}>
+          <div style={{ width: `${currentPercent}%`, height: '100%', background: 'linear-gradient(90deg, #FF1E27 0%, #FFD700 100%)', borderRadius: 8 }} />
+        </div>
+        <div style={{ marginTop: 'auto', textAlign: 'center', color: '#fff', fontSize: 22, fontWeight: 700 }}>
+          कमेंट्स में अपनी राय जरूर बताएं 💭
+        </div>
+      </div>
+    </GlassmorphicCard>
+  );
+};
+```
+
+---
+
+### 12.4 Core Applications in 9:16 Shorts & Reels
+
+1. **Floating Dual-Agency Docks (Shin Bet vs Mossad / CBI vs ED)**:
+   - Dual frosted glass cards side-by-side ($440 	imes 440 	ext{ px}$), hovering gently over legislative or tactical satellite imagery with cyan and crimson rim borders.
+2. **Diplomatic Portrait Cards (Turkey & Qatar Denial Panels)**:
+   - Two vertical frosted glass photo enclosures ($440 	imes 540 	ext{ px}$) over moving color blobs, receiving the distressed red rubber stamp (`DENIED // खारिज`).
+3. **Interactive Audience Engagement Outros**:
+   - High-retention ending poll widget that keeps viewers watching through frame 1474 while reading the poll and commenting.
+
