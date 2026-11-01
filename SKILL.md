@@ -22,6 +22,7 @@ This skill governs the production of high-velocity, faceless investigative news 
 | **Typography Pairing** | `Baloo Bhai 2` (Devanagari, 800/900) + `Montserrat` / `Inter` (Latin/Numbers) | Same |
 | **Brand Color Palette** | Obsidian (`#060102`), White (`#FFFFFF`), Alert Crimson (`#FF1E27`), Cyan (`#00E5FF`), Gold (`#FFD700`) | Same |
 | **Compulsory Glassmorphism** | **MANDATORY ACROSS ALL CARDS & HUDs**: 100% of dossiers, stat cards, comparison docks, and poll widgets must use the 5-layer frosted glass contract (`backdropFilter: blur(24px) saturate(170%)`, specular rim highlight, sheen sweep). Flat opaque cards are strictly prohibited. | Same |
+| **Universal Motion & 3D Animation** | **MANDATORY NON-STATIC & 3D PHYSICS**: Zero static elements allowed. Every image must have continuous Ken Burns scale/pan/drift. Every motion graphic must feature active 3D transforms (`perspective`, `rotateX/Y/Z`), continuous floating sine waves, and moving specular highlights. Above all must NEVER be static. | Same |
 | **Master Delivery** | Direct master `.mp4` (H.264, AAC 48kHz, CRF 18). **No Premiere Pro / XML files**. | Same |
 
 ---
@@ -126,6 +127,13 @@ Rather than relying on flat text slides, every scene in a 9:16 short must be cas
 8. **Noise Management & Stylistic Texture Isolation**:
    - All visual noise, banding, and unintended distortion must be suppressed. Low-resolution or grainy source footage must be de-noised.
    - Stylistic textures (e.g., retro VHS noise, CRT scanlines, halftone dots) must remain strictly confined to background or accent layers—never allow noise overlays to degrade foreground text clarity or data counters.
+9. **Universal Non-Static Animation Mandate (Above All Must NOT Be Static)**:
+   - **Zero Static Images**: Every single image, leader portrait, paper document, and background plate must have active, continuous motion (continuous Ken Burns push-in/pull-out `scale: 1.05 → 1.18`, subtle positional drift, or parallax shift). A completely frozen still image is strictly prohibited.
+   - **Zero Static Motion Graphics**: Every card, HUD dock, data counter, bar chart, split-flap board, and poll widget must maintain living animation throughout its lifespan—continuous floating sine elevation (`translateY: Math.sin(frame / 15) * 8px`), gentle breathing scale, rotating telemetry dials, or sweeping light sheens. Elements must never enter and lock into a frozen state.
+10. **3D Motion & Perspective Depth Physics Mandate**:
+    - All scenes must enforce authentic 3D spatial staging using CSS 3D transforms (`perspective: 1200px`, `transformStyle: 'preserve-3d'`).
+    - Incorporate dynamic 3D multi-axis rotations (`rotateX`, `rotateY`, `rotateZ`, `translateZ`) on entrance, hold, and exit.
+    - Multi-plane 3D parallax: background footage, midground frosted glass docks (`translateZ(30px)`), floating data badges (`translateZ(60px)`), and foreground status stamps (`translateZ(90px)`) must move at independent depth speeds to create a tactile 3D physical documentary look.
 
 ---
 
